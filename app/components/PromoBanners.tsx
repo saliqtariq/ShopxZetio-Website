@@ -13,7 +13,7 @@ export function PromoBanners({ onNavigate }: { onNavigate: NavigateHandler }) {
         >
           <div className="absolute inset-0">
             <img
-              src={IMG.iphone2}
+              src={IMG.iphone15pm}
               alt="iPhones"
               className="w-full h-full object-cover object-center transition-all duration-700 ease-out opacity-60 group-hover:opacity-80 group-hover:scale-105"
             />
