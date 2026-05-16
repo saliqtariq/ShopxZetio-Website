@@ -5,7 +5,7 @@ import type { NavigateHandler } from "../types";
 
 export function PromoBanners({ onNavigate }: { onNavigate: NavigateHandler }) {
   return (
-    <section className="w-full bg-zinc-950 py-12">
+    <section className="w-full bg-black py-12">
       <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-8 h-auto md:h-150">
         <button
           onClick={() => onNavigate("shop", "phones")}

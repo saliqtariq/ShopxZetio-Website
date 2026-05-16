@@ -4,8 +4,8 @@ import type { NavigateHandler } from "../types";
 
 export function HeroSection({ onNavigate }: { onNavigate: NavigateHandler }) {
   return (
-    <section className="relative w-full bg-zinc-900 overflow-hidden">
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 pt-8 pb-8 md:pt-10 md:pb-10 lg:pt-12 lg:pb-12">
+    <section className="relative w-full bg-zinc-900 overflow-hidden min-h-[55vh]">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 pt-10 pb-10 md:pt-12 md:pb-12 lg:pt-14 lg:pb-14">
         <div className="w-full max-w-4xl text-left">
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white uppercase italic leading-none mb-6">
             <span className="block">Dominate</span>

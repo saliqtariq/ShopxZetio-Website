@@ -6,7 +6,7 @@ import { ProductCard } from "./ProductCard";
 
 export function NewArrivals({ onNavigate }: { onNavigate: NavigateHandler }) {
   return (
-    <section className="py-20 px-4 md:px-8 max-w-7xl mx-auto w-full">
+    <section className="pt-6 pb-20 px-4 md:px-8 max-w-7xl mx-auto w-full">
       <div className="flex items-end justify-between mb-10">
         <h2 className="text-3xl md:text-5xl font-black uppercase italic tracking-tighter">New Arrivals</h2>
         <button

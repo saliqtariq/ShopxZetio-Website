@@ -1,6 +1,6 @@
 "use client";
 
-import { Menu, Search, ShoppingBag, User, X } from "lucide-react";
+import { Menu, Search, ShoppingBag, X } from "lucide-react";
 import { useState } from "react";
 import { NAV_ITEMS } from "../data/navigation";
 import type { NavigateHandler } from "../types";
@@ -33,13 +33,17 @@ export function Navbar({ onNavigate }: { onNavigate: NavigateHandler }) {
           ))}
         </nav>
 
-        <div className="flex items-center gap-4">
-          <button className="text-zinc-300 hover:text-white hidden md:block transition-colors cursor-pointer">
-            <Search className="w-5 h-5" />
-          </button>
-          <button className="text-zinc-300 hover:text-white hidden md:block transition-colors cursor-pointer">
-            <User className="w-5 h-5" />
-          </button>
+        <div className="flex items-center gap-3">
+          <div className="hidden md:flex items-center bg-white/10 text-white rounded-full px-2 py-1 w-42 lg:w-52 gap-2 border border-white/20 backdrop-blur-sm">
+            <Search className="w-4 h-4 text-white" />
+            <input
+              aria-label="Search"
+              type="search"
+              placeholder="What are you looking for tod..."
+              className="bg-transparent outline-none text-xs w-full placeholder-zinc-400 text-white"
+            />
+          </div>
+
           <button className="text-zinc-300 hover:text-white relative transition-colors cursor-pointer">
             <ShoppingBag className="w-5 h-5" />
             <span className="absolute -top-1 -right-1 bg-white text-black text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
