@@ -5,7 +5,7 @@ import { ALL_PRODUCTS } from "../data/products";
 import type { NavigateHandler } from "../types";
 import { ProductCard } from "./ProductCard";
 
-const FILTERS = ["All Filters", "Price", "Brand", "Color"];
+// FILTERS removed per user request
 
 export function ShopPage({ category, onNavigate }: { category?: string; onNavigate: NavigateHandler }) {
   const [sort, setSort] = useState("recommended");
@@ -32,19 +32,6 @@ export function ShopPage({ category, onNavigate }: { category?: string; onNaviga
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
-          <div className="flex gap-2 w-full md:w-auto overflow-x-auto pb-2 md:pb-0">
-            {FILTERS.map((filter, index) => (
-              <span
-                key={filter}
-                className={`text-xs font-bold uppercase tracking-widest px-4 py-2 rounded whitespace-nowrap cursor-pointer transition-colors ${
-                  index === 0 ? "bg-white text-black" : "bg-zinc-900 text-white hover:bg-zinc-800"
-                }`}
-              >
-                {filter}
-              </span>
-            ))}
-          </div>
-
           <div className="w-full md:w-auto flex justify-end">
             <select
               value={sort}

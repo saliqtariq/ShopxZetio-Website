@@ -7,7 +7,7 @@ type ProductCardProps = Product & {
   onNavigate: NavigateHandler;
 };
 
-export function ProductCard({ name, category, price, image, isNew, onNavigate }: ProductCardProps) {
+export function ProductCard({ name, category, price, image, isNew, currency, onNavigate }: ProductCardProps & { currency?: string }) {
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -47,7 +47,9 @@ export function ProductCard({ name, category, price, image, isNew, onNavigate }:
         <div className="flex flex-col">
           <span className="text-zinc-500 text-xs font-bold uppercase tracking-widest mb-1">{category}</span>
           <h3 className="text-zinc-100 font-bold mb-1 group-hover:text-white transition-colors">{name}</h3>
-          <span className="text-zinc-300 font-medium">${price.toFixed(2)}</span>
+          <span className="text-zinc-300 font-medium">
+            {currency ? `${currency} ${price.toLocaleString()}` : `$${price.toFixed(2)}`}
+          </span>
         </div>
       </div>
     </div>
