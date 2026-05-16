@@ -80,7 +80,7 @@ function ProductCard({ name, category, price, image, isNew, onNavigate }: Produc
             className="absolute bottom-4 left-4 right-4 z-10 transition-all duration-300"
             style={{ transform: hovered ? "translateY(0)" : "translateY(100%)", opacity: hovered ? 1 : 0 }}
           >
-            <button className="w-full bg-white text-black py-3 font-bold uppercase tracking-wider text-sm hover:bg-zinc-200 transition-colors rounded shadow-lg">
+            <button className="w-full bg-white text-black py-3 font-bold uppercase tracking-wider text-sm hover:bg-zinc-200 transition-colors rounded shadow-lg cursor-pointer">
               Quick Add
             </button>
           </div>
@@ -106,7 +106,7 @@ function Navbar({ onNavigate }: { onNavigate: (page: string, cat?: string) => vo
       <div className="flex items-center justify-between h-16 px-4 md:px-8 max-w-7xl mx-auto">
         {/* Mobile Menu Toggle */}
         <div className="flex items-center md:hidden">
-          <button className="text-zinc-100 p-2 -ml-2" onClick={() => setMobileOpen(!mobileOpen)}>
+          <button className="text-zinc-100 p-2 -ml-2 cursor-pointer" onClick={() => setMobileOpen(!mobileOpen)}>
             {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
@@ -114,7 +114,7 @@ function Navbar({ onNavigate }: { onNavigate: (page: string, cat?: string) => vo
         {/* Logo */}
         <button
           onClick={() => onNavigate("home")}
-          className="shrink-0 flex items-center"
+          className="shrink-0 flex items-center cursor-pointer"
         >
           <span className="text-2xl font-black tracking-tighter text-white uppercase italic">
             SHOPXZETIO
@@ -132,7 +132,7 @@ function Navbar({ onNavigate }: { onNavigate: (page: string, cat?: string) => vo
             <button
               key={cat}
               onClick={() => onNavigate("shop", cat)}
-              className="text-sm font-bold text-zinc-300 hover:text-white uppercase tracking-wider transition-colors"
+              className="text-sm font-bold text-zinc-300 hover:text-white uppercase tracking-wider transition-colors cursor-pointer"
             >
               {label}
             </button>
@@ -141,13 +141,13 @@ function Navbar({ onNavigate }: { onNavigate: (page: string, cat?: string) => vo
 
         {/* Icons */}
         <div className="flex items-center gap-4">
-          <button className="text-zinc-300 hover:text-white hidden md:block transition-colors">
+          <button className="text-zinc-300 hover:text-white hidden md:block transition-colors cursor-pointer">
             <Search className="w-5 h-5" />
           </button>
-          <button className="text-zinc-300 hover:text-white hidden md:block transition-colors">
+          <button className="text-zinc-300 hover:text-white hidden md:block transition-colors cursor-pointer">
             <User className="w-5 h-5" />
           </button>
-          <button className="text-zinc-300 hover:text-white relative transition-colors">
+          <button className="text-zinc-300 hover:text-white relative transition-colors cursor-pointer">
             <ShoppingBag className="w-5 h-5" />
             <span className="absolute -top-1 -right-1 bg-white text-black text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
               0
@@ -168,7 +168,7 @@ function Navbar({ onNavigate }: { onNavigate: (page: string, cat?: string) => vo
             <button
               key={cat}
               onClick={() => { onNavigate("shop", cat); setMobileOpen(false); }}
-              className="text-sm font-bold text-zinc-300 hover:text-white uppercase tracking-wider text-left transition-colors"
+              className="text-sm font-bold text-zinc-300 hover:text-white uppercase tracking-wider text-left transition-colors cursor-pointer"
             >
               {label}
             </button>
@@ -197,7 +197,7 @@ function Footer() {
           <ul className="space-y-4">
             {["FAQ", "Delivery Information", "Returns Policy", "Make a Return"].map((item) => (
               <li key={item}>
-                <button className="text-sm text-zinc-400 hover:text-white transition-colors">{item}</button>
+                <button className="text-sm text-zinc-400 hover:text-white transition-colors cursor-pointer">{item}</button>
               </li>
             ))}
           </ul>
@@ -208,7 +208,7 @@ function Footer() {
           <ul className="space-y-4">
             {["About Us", "Student Discount", "Careers"].map((item) => (
               <li key={item}>
-                <button className="text-sm text-zinc-400 hover:text-white transition-colors">{item}</button>
+                <button className="text-sm text-zinc-400 hover:text-white transition-colors cursor-pointer">{item}</button>
               </li>
             ))}
           </ul>
@@ -223,7 +223,7 @@ function Footer() {
               placeholder="Email address"
               className="bg-zinc-900 border border-zinc-800 text-white px-4 py-3 w-full focus:outline-none focus:border-white rounded-l-md"
             />
-            <button className="bg-white text-black font-bold uppercase tracking-wider px-6 py-3 hover:bg-zinc-200 transition-colors rounded-r-md">
+            <button className="bg-white text-black font-bold uppercase tracking-wider px-6 py-3 hover:bg-zinc-200 transition-colors rounded-r-md cursor-pointer">
               Join
             </button>
           </div>
@@ -249,30 +249,26 @@ function HomePage({ onNavigate }: { onNavigate: (page: string, cat?: string) => 
   return (
     <div className="flex flex-col w-full">
       {/* Hero */}
-      <section className="relative h-[85vh] w-full bg-zinc-900 overflow-hidden">
-        <div className="absolute inset-0">
-          <img src={IMG.hero} alt="Hero Background" className="w-full h-full object-cover object-center opacity-70" />
-          <div className="absolute inset-0 bg-linear-to-t from-black via-black/40 to-transparent" />
-        </div>
-
-        <div className="relative z-10 h-full max-w-7xl mx-auto px-4 md:px-8 flex flex-col justify-end pb-24 md:pb-32">
-          <div className="max-w-2xl">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white uppercase italic tracking-tighter leading-[0.85] mb-6">
-              Dominate <br /> The Game.
+      <section className="relative w-full bg-zinc-900 overflow-hidden">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 pt-6 pb-8 md:pt-8 md:pb-10 lg:pt-10 lg:pb-12">
+          <div className="w-full max-w-4xl text-left">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white uppercase italic leading-none mb-6">
+              <span className="block">Dominate</span>
+              <span className="block">The Game.</span>
             </h1>
-            <p className="text-lg md:text-xl text-zinc-300 font-medium mb-8 max-w-md">
+            <p className="text-lg md:text-xl text-white font-medium leading-relaxed mb-10 max-w-2xl">
               Level up your setup with professional-grade audio and elite devices. Built for those who refuse to lose.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row items-start gap-4">
               <button
                 onClick={() => onNavigate("shop")}
-                className="bg-white text-black text-center font-bold uppercase tracking-wider px-8 py-4 hover:bg-zinc-200 transition-colors rounded shadow-lg"
+                className="bg-white text-black text-center font-bold uppercase px-8 py-4 hover:bg-zinc-200 transition-colors rounded shadow-lg min-w-48 cursor-pointer"
               >
                 Shop All
               </button>
               <button
                 onClick={() => onNavigate("shop", "headphones")}
-                className="bg-zinc-800/80 backdrop-blur text-white text-center font-bold uppercase tracking-wider px-8 py-4 hover:bg-zinc-700 transition-colors rounded border border-zinc-700"
+                className="bg-zinc-800/80 backdrop-blur text-white text-center font-bold uppercase px-8 py-4 hover:bg-zinc-700 transition-colors rounded border border-zinc-700 min-w-48 cursor-pointer"
               >
                 Pro Audio
               </button>
@@ -287,7 +283,7 @@ function HomePage({ onNavigate }: { onNavigate: (page: string, cat?: string) => 
           <h2 className="text-3xl md:text-5xl font-black uppercase italic tracking-tighter">New Arrivals</h2>
           <button
             onClick={() => onNavigate("shop")}
-            className="hidden md:inline-flex text-sm font-bold uppercase tracking-widest text-zinc-400 hover:text-white transition-colors items-center gap-2"
+            className="hidden md:inline-flex text-sm font-bold uppercase tracking-widest text-zinc-400 hover:text-white transition-colors items-center gap-2 cursor-pointer"
           >
             View All
           </button>
@@ -306,7 +302,7 @@ function HomePage({ onNavigate }: { onNavigate: (page: string, cat?: string) => 
           {/* Box 1 – iPhones */}
           <button
             onClick={() => onNavigate("shop", "phones")}
-            className="relative group rounded-2xl overflow-hidden block h-72 md:h-full w-full text-left"
+            className="relative group rounded-2xl overflow-hidden block h-72 md:h-full w-full text-left cursor-pointer"
           >
             <div className="absolute inset-0">
               <img
@@ -331,7 +327,7 @@ function HomePage({ onNavigate }: { onNavigate: (page: string, cat?: string) => 
           <div className="grid grid-rows-2 gap-8 h-72 md:h-full">
             <button
               onClick={() => onNavigate("shop", "accessories")}
-              className="relative group rounded-2xl overflow-hidden block w-full text-left"
+              className="relative group rounded-2xl overflow-hidden block w-full text-left cursor-pointer"
             >
               <div className="absolute inset-0 bg-zinc-900">
                 <div className="absolute inset-0 bg-zinc-800 group-hover:bg-zinc-700 transition-colors flex items-center justify-center p-8">
@@ -349,7 +345,7 @@ function HomePage({ onNavigate }: { onNavigate: (page: string, cat?: string) => 
 
             <button
               onClick={() => onNavigate("shop", "earbuds")}
-              className="relative group rounded-2xl overflow-hidden block w-full text-left"
+              className="relative group rounded-2xl overflow-hidden block w-full text-left cursor-pointer"
             >
               <div className="absolute inset-0 bg-zinc-900">
                 <img
@@ -467,7 +463,7 @@ function ShopPage({ category, onNavigate }: { category?: string; onNavigate: (pa
         ) : (
           <div className="py-24 text-center flex flex-col items-center justify-center">
             <h3 className="text-2xl font-bold uppercase mb-4 text-zinc-300">No products found</h3>
-            <p className="text-zinc-500 mb-8">We couldn't find any products in this category.</p>
+            <p className="text-zinc-500 mb-8">We couldn&apos;t find any products in this category.</p>
           </div>
         )}
       </div>
