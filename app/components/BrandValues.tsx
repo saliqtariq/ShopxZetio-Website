@@ -15,7 +15,7 @@ export function BrandValues() {
                 {num}
               </div>
               <h3 className="text-xl font-bold uppercase tracking-wider mb-3">{title}</h3>
-              <p className="text-zinc-400 leading-relaxed max-w-xs">{desc}</p>
+              <p className="text-white leading-relaxed max-w-xs">{desc}</p>
             </div>
           ))}
         </div>

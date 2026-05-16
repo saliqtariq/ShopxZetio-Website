@@ -7,7 +7,7 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-4 gap-12">
         <div>
           <h3 className="text-xl font-black uppercase tracking-tighter italic mb-6">SHOPXZETIO</h3>
-          <p className="text-zinc-400 text-sm font-medium leading-relaxed">
+          <p className="text-white text-sm font-medium leading-relaxed">
             Premium gaming audio, flagship devices, and elite accessories engineered for maximum performance.
           </p>
         </div>
@@ -16,18 +16,18 @@ export function Footer() {
         <FooterLinkColumn title="Pages" items={PAGE_LINKS} />
 
         <div>
-          <h4 className="text-sm font-bold uppercase tracking-widest mb-6 text-zinc-100">Newsletter</h4>
-          <p className="text-zinc-400 text-sm mb-4">Sign up for exclusive drops, early access, and gaming events.</p>
-          <div className="flex">
-            <input
-              type="email"
-              placeholder="Email address"
-              className="bg-zinc-900 border border-zinc-800 text-white px-4 py-3 w-full focus:outline-none focus:border-white rounded-l-md"
-            />
-            <button className="bg-white text-black font-bold uppercase tracking-wider px-6 py-3 hover:bg-zinc-200 transition-colors rounded-r-md cursor-pointer">
-              Join
-            </button>
-          </div>
+          <h4 className="text-sm font-bold uppercase tracking-widest mb-6 text-zinc-100">Contact</h4>
+          <p className="text-white text-sm mb-4">
+            Need help choosing the right gear? Chat with our support team on WhatsApp.
+          </p>
+          <a
+            href="https://wa.me/15551234567?text=Hi%20SHOPXZETIO%20team%2C%20I%20need%20help%20with%20my%20order"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center justify-center bg-green-500 text-black font-bold uppercase tracking-wider px-5 py-3 hover:bg-green-400 transition-colors rounded-md"
+          >
+            WhatsApp
+          </a>
         </div>
       </div>
 
@@ -55,7 +55,7 @@ function FooterLinkColumn({ title, items }: { title: string; items: string[] }) 
       <ul className="space-y-4">
         {items.map((item) => (
           <li key={item}>
-            <button className="text-sm text-zinc-400 hover:text-white transition-colors cursor-pointer">{item}</button>
+            <button className="text-sm text-white hover:text-white transition-colors cursor-pointer">{item}</button>
           </li>
         ))}
       </ul>
