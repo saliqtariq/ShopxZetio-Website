@@ -195,7 +195,7 @@ export default function ProductDetailPage() {
               <button
                 onClick={handleAddToCart}
                 disabled={isAdded}
-                className={`flex-1 h-14 font-black uppercase tracking-wider text-sm transition-all rounded-md flex items-center justify-center gap-2.5 cursor-pointer shadow-lg ${
+                className={`w-full sm:flex-1 h-14 flex-shrink-0 font-black uppercase tracking-wider text-sm transition-all rounded-md flex items-center justify-center gap-2.5 cursor-pointer shadow-lg ${
                   isAdded
                     ? "bg-green-500 text-black border border-green-500 scale-[0.98]"
                     : "bg-white text-black hover:bg-zinc-200"
