@@ -7,5 +7,3 @@ export interface Product {
   image: string;
   isNew?: boolean;
 }
-
-export type NavigateHandler = (page: string, cat?: string) => void;

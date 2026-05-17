@@ -1,5 +1,5 @@
-const HELP_LINKS = ["FAQ", "Delivery Information", "Returns Policy", "Make a Return"];
-const PAGE_LINKS = ["About Us", "Student Discount", "Careers"];
+const HELP_LINKS = ["Delivery Information","Make a Return"];
+const PAGE_LINKS = ["About Us"];
 
 export function Footer() {
   return (

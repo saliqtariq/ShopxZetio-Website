@@ -2,22 +2,29 @@
 
 import { useState } from "react";
 import { ALL_PRODUCTS } from "../data/products";
-import type { NavigateHandler } from "../types";
 import { ProductCard } from "./ProductCard";
 
 // FILTERS removed per user request
 
-export function ShopPage({ category, onNavigate }: { category?: string; onNavigate: NavigateHandler }) {
+export function ShopPage({ category, searchQuery }: { category?: string; searchQuery?: string; }) {
   const [sort, setSort] = useState("recommended");
 
-  const filtered = category ? ALL_PRODUCTS.filter((product) => product.category === category) : ALL_PRODUCTS;
+  let filtered = ALL_PRODUCTS;
+  if (category) {
+    filtered = filtered.filter((product) => product.category === category);
+  }
+  if (searchQuery) {
+    const query = searchQuery.toLowerCase();
+    filtered = filtered.filter((product) => product.name.toLowerCase().includes(query) || product.category.toLowerCase().includes(query));
+  }
+
   const sorted = [...filtered].sort((a, b) => {
     if (sort === "price-asc") return a.price - b.price;
     if (sort === "price-desc") return b.price - a.price;
     return 0;
   });
 
-  const pageTitle = category ? category.charAt(0).toUpperCase() + category.slice(1) : "All Products";
+  const pageTitle = category ? category.charAt(0).toUpperCase() + category.slice(1) : searchQuery ? `Search: "${searchQuery}"` : "All Products";
 
   return (
     <div className="w-full min-h-screen bg-black pt-10 pb-24">
@@ -27,6 +34,8 @@ export function ShopPage({ category, onNavigate }: { category?: string; onNaviga
           <p className="text-zinc-400 mt-4 text-sm font-medium max-w-xl">
             {category
               ? `Browse our premium selection of ${category} designed for maximum performance and durability.`
+              : searchQuery
+              ? `Showing results for "${searchQuery}"`
               : "Explore the complete Shopxzetio collection. High-performance gaming gear and flagship devices."}
           </p>
         </div>
@@ -48,7 +57,7 @@ export function ShopPage({ category, onNavigate }: { category?: string; onNaviga
         {sorted.length > 0 ? (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
             {sorted.map((product) => (
-              <ProductCard key={product.id} {...product} onNavigate={onNavigate} />
+              <ProductCard key={product.id} {...product} />
             ))}
           </div>
         ) : (

@@ -1,17 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import type { NavigateHandler, Product } from "../types";
+import type { Product } from "../types";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
 
-type ProductCardProps = Product & {
-  onNavigate: NavigateHandler;
-};
-
-export function ProductCard({ name, category, price, image, isNew, currency, onNavigate }: ProductCardProps & { currency?: string }) {
+export function ProductCard({ name, category, price, image, isNew, currency }: Product & { currency?: string }) {
+  const router = useRouter();
   const [hovered, setHovered] = useState(false);
 
   return (
-    <div className="block cursor-pointer" onClick={() => onNavigate("shop", category)}>
+    <div className="block cursor-pointer" onClick={() => router.push(`/shop?category=${category}`)}>
       <div
         className="group flex flex-col"
         style={{ transform: hovered ? "translateY(-8px)" : "translateY(0)", transition: "transform 0.3s ease" }}
@@ -28,10 +27,12 @@ export function ProductCard({ name, category, price, image, isNew, currency, onN
             className="absolute inset-0 z-0 transition-colors"
             style={{ backgroundColor: hovered ? "transparent" : "rgba(0,0,0,0.1)" }}
           />
-          <img
+          <Image
             src={image}
             alt={name}
-            className="w-full h-full object-cover object-center transition-transform duration-700 ease-out"
+            fill
+            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
+            className="object-cover object-center transition-transform duration-700 ease-out"
             style={{ transform: hovered ? "scale(1.05)" : "scale(1)" }}
           />
           <div
