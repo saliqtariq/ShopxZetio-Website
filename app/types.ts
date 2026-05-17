@@ -6,4 +6,7 @@ export interface Product {
   currency?: string;
   image: string;
   isNew?: boolean;
+  description?: string;
+  specs?: string[];
+  deliveryTime?: string;
 }

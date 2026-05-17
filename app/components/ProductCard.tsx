@@ -25,7 +25,7 @@ export function ProductCard({ id, name, category, price, image, isNew, currency 
   };
 
   return (
-    <div className="block cursor-pointer" onClick={() => router.push(`/shop?category=${category}`)}>
+    <div className="block cursor-pointer" onClick={() => router.push(`/product/${id}`)}>
       <div
         className="group flex flex-col"
         style={{ transform: hovered ? "translateY(-8px)" : "translateY(0)", transition: "transform 0.3s ease" }}
