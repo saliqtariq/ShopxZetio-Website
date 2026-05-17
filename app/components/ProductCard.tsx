@@ -4,10 +4,25 @@ import { useState } from "react";
 import type { Product } from "../types";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { useCart } from "../context/CartContext";
 
-export function ProductCard({ name, category, price, image, isNew, currency }: Product & { currency?: string }) {
+export function ProductCard({ id, name, category, price, image, isNew, currency }: Product) {
   const router = useRouter();
   const [hovered, setHovered] = useState(false);
+  const [isAdded, setIsAdded] = useState(false);
+  const { addToCart } = useCart();
+
+  const handleQuickAdd = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    if (isAdded) return;
+
+    setIsAdded(true);
+    addToCart({ id, name, category, price, currency, image, isNew });
+
+    setTimeout(() => {
+      setIsAdded(false);
+    }, 1000); // 1-second cooldown/rate-limit window
+  };
 
   return (
     <div className="block cursor-pointer" onClick={() => router.push(`/shop?category=${category}`)}>
@@ -39,8 +54,16 @@ export function ProductCard({ name, category, price, image, isNew, currency }: P
             className="absolute bottom-4 left-4 right-4 z-10 transition-all duration-300"
             style={{ transform: hovered ? "translateY(0)" : "translateY(100%)", opacity: hovered ? 1 : 0 }}
           >
-            <button className="w-full bg-white text-black py-3 font-bold uppercase tracking-wider text-sm hover:bg-zinc-200 transition-colors rounded shadow-lg cursor-pointer">
-              Quick Add
+            <button
+              onClick={handleQuickAdd}
+              disabled={isAdded}
+              className={`w-full py-3 font-bold uppercase tracking-wider text-sm transition-all rounded shadow-lg cursor-pointer ${
+                isAdded
+                  ? "bg-green-500 text-black border border-green-500 scale-[0.97]"
+                  : "bg-white text-black hover:bg-zinc-200"
+              }`}
+            >
+              {isAdded ? "Added ✓" : "Quick Add"}
             </button>
           </div>
         </div>

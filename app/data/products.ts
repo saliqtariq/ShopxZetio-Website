@@ -29,7 +29,7 @@ export const HOME_PRODUCTS: Product[] = [
 
 export const ALL_PRODUCTS: Product[] = [
   ...HOME_PRODUCTS,
-  { id: "16", name: "iPhone 13 Pro Max Non-Pta", category: "phones", price: 140, currency: "PKR", image: IMG.iphone13pm },
+  { id: "16", name: "iPhone 13 Pro Max Non-Pta", category: "phones", price: 140000, currency: "PKR", image: IMG.iphone13pm },
   { id: "6", name: "Logitech G Pro X", category: "headphones", price: 25000, currency: "PKR", image: IMG.logiProX },
   { id: "10", name: "HyperX Earbuds 2", category: "earbuds", price: 12000, currency: "PKR", image: IMG.earbuds2 },
   { id: "11", name: "McDodo Spliter", category: "accessories", price: 6000, currency: "PKR", image: IMG.mcdodoSplitter },

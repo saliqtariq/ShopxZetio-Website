@@ -6,6 +6,7 @@ import { NAV_ITEMS } from "../data/navigation";
 import { ALL_PRODUCTS } from "../data/products";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useCart } from "../context/CartContext";
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -13,6 +14,7 @@ export function Navbar() {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
+  const { cartCount, setIsOpen } = useCart();
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -101,11 +103,17 @@ export function Navbar() {
             )}
           </div>
 
-          <button className="text-zinc-300 hover:text-white relative transition-colors cursor-pointer">
+          <button
+            onClick={() => setIsOpen(true)}
+            className="text-zinc-300 hover:text-white relative transition-colors cursor-pointer"
+            aria-label="Open cart"
+          >
             <ShoppingBag className="w-5 h-5" />
-            <span className="absolute -top-1 -right-1 bg-white text-black text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
-              0
-            </span>
+            {cartCount > 0 && (
+              <span className="absolute -top-1 -right-1 bg-white text-black text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center animate-pulse">
+                {cartCount}
+              </span>
+            )}
           </button>
         </div>
       </div>
